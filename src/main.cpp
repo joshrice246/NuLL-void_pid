@@ -1,21 +1,10 @@
 #include "main.h"
+#include "pid.cpp"
+#include "pid.h"
+#include "robotconfig.hpp"
+#include "robotconfig.cpp"
 
 using namespace pros;
-
-pros::Motor topRoller(4);
-pros::Motor intake(3);
-
-pros::MotorGroup left_mg({-20, -18, -19});
-pros::MotorGroup right_mg({8,9,10});
-
- pros::Imu imu(7);
-
- pros::adi::Pneumatics Match_loader('A', false);
- pros::adi::Pneumatics descore('B', false);
-
-
-
-
 
 
 
@@ -74,7 +63,10 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
+   drivePID(800);   // drive forward
+    pros::delay(200);
 
+    turnPID(90);     // turn 90°
 	
 }
 
@@ -109,21 +101,12 @@ void opcontrol() {
 		// Arcade control scheme
 		int dir = master.get_analog(ANALOG_LEFT_Y);    // Gets amount forward/backward from left joystick
 		int turn = master.get_analog(ANALOG_RIGHT_X);  // Gets the turn left/right from right joystick
-		left_mg.move(dir + turn);                      // Sets left motor voltage
-		right_mg.move(dir - turn);                     // Sets right motor voltage
+		leftDrive.move(dir + turn);                      // Sets left motor voltage
+		rightDrive.move(dir - turn);                     // Sets right motor voltage
 		pros::delay(20);     
 			
 
 
- if(master.get_digital_new_press(DIGITAL_B))
-{
- 	Match_loader.extend();
- }
-
- if(master.get_digital_new_press(DIGITAL_A))
-{
- 	descore.extend();
- }
 
 	}
 }
