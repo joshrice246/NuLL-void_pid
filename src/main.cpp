@@ -1,8 +1,8 @@
+//lock in
+
 #include "main.h"
-#include "pid.cpp"
 #include "pid.h"
 #include "robotconfig.hpp"
-#include "robotconfig.cpp"
 
 using namespace pros;
 

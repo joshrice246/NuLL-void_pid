@@ -2,7 +2,7 @@
 #include <cmath>
 
 // Drive PID constants
-double drive_kP = 0.6;
+double drive_kP = 0.5;
 double drive_kI = 0.0;
 double drive_kD = 2.5;
 

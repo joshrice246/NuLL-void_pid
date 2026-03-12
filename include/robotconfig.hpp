@@ -5,6 +5,10 @@
 extern pros::MotorGroup leftDrive;
 extern pros::MotorGroup rightDrive;
 
+// Individual motors   
+extern pros::Motor topRoller;
+extern pros::Motor intake;
+
 // IMU
 extern pros::Imu imu;
 
